@@ -1,5 +1,5 @@
 # no query
-An extremely lightweight javascript library with some readable syntatic sugar tp replace libraries like jquery are no longer needed, however some vinila javascript is hard to read.
+An extremely lightweight javascript library with some readable syntatic sugar tp replace libraries like jquery are no longer needed, however some vanilla javascript is hard to read.
 
 ## Example
 ```javascript
