@@ -11,7 +11,7 @@ function $all(selector) {
 }
 
 function $show(selector) {
-  $all(selector).forEach(element => {
+  $all(selector).forEach(function (element) {
     element.classList.remove('hidden');
   });
 }
@@ -38,5 +38,7 @@ function $stop(event) {
 }
 
 function $listen(selector, event, listener) {
-  return $1(selector).addEventListener(event, listener);
+  return $all(selector).forEach(function (element) {
+    element.addEventListener(event, listener);
+  });
 }
