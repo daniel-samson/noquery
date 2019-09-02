@@ -1,0 +1,2 @@
+# noquery
+alternative to jquery
