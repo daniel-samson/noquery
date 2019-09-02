@@ -51,3 +51,7 @@ function $ignore(selector, event, listener, useCapture) {
     element.removeEventListener(event, listener, useCapture);
   });
 }
+
+function $redirect(url) {
+  window.location.href = url;
+}
