@@ -15,13 +15,17 @@ function $all(selector, parentNode) {
 
 function $show(selector, parentNode) {
   $all(selector, parentNode).forEach(function (element) {
-    element.classList.remove('hidden');
+    if (!element.classList.contains('hidden')) {
+      element.classList.remove('hidden');
+    }
   });
 }
 
 function $hide(selector, parentNode) {
   $all(selector, parentNode).forEach(function (element) {
-    element.classList.add('hidden');
+    if (!element.classList.contains('hidden')) {
+      element.classList.add('hidden');
+    }
   });
 }
 
