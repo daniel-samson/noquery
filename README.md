@@ -8,5 +8,18 @@ $ready(function () {
     $stop(clickEvent);
     $toggleClassName('.productMenu', 'hidden');
   });
+  
+  $listen('.productKeywords', 'keyup', function (keypressEvent) {
+    $stop(keypressEvent);
+    if (keypressEvent.code === 'Escape')
+      return $hide('.productSearchMenu');
+    else if (keypressEvent.code === 'Enter')
+      return $hide('.productMenu');
+
+    if ($1('.productKeywords').value.length > 0)
+      $show('.productSearchMenu');
+    else
+      $hide('.productSearchMenu');
+  });
 }
 ```
