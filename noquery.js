@@ -42,3 +42,9 @@ function $listen(selector, event, listener) {
     element.addEventListener(event, listener);
   });
 }
+
+function $ignore(selector, event, listener, useCapture) {
+  return $all(selector).forEach(function (element) {
+    element.removeEventListener(event, listener, useCapture);
+  });
+}
