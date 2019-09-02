@@ -1,23 +1,26 @@
-function $ready(callback) {
-  return window.addEventListener('load', callback);
+function $ready(callback, parentNode) {
+  var node =  parentNode ? parentNode : window;
+  return node.addEventListener('load', callback);
 }
 
-function $1(selector) {
-  return document.querySelector(selector);
+function $1(selector, parentNode) {
+  var node =  parentNode ? parentNode : document;
+  return node.querySelector(selector);
 }
 
-function $all(selector) {
-  return document.querySelectorAll(selector);
+function $all(selector, parentNode) {
+  var node =  parentNode ? parentNode : document;
+  return node.querySelectorAll(selector);
 }
 
-function $show(selector) {
-  $all(selector).forEach(function (element) {
+function $show(selector, parentNode) {
+  $all(selector, parentNode).forEach(function (element) {
     element.classList.remove('hidden');
   });
 }
 
-function $hide(selector) {
-  $all(selector).forEach(function (element) {
+function $hide(selector, parentNode) {
+  $all(selector, parentNode).forEach(function (element) {
     element.classList.add('hidden');
   });
 }
