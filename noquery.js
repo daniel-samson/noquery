@@ -15,7 +15,7 @@ function $all(selector, parentNode) {
 
 function $show(selector, parentNode) {
   $all(selector, parentNode).forEach(function (element) {
-    if (!element.classList.contains('hidden')) {
+    if (element.classList.contains('hidden')) {
       element.classList.remove('hidden');
     }
   });
