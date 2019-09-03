@@ -59,3 +59,48 @@ function $ignore(selector, event, listener, useCapture) {
 function $redirect(url) {
   window.location.href = url;
 }
+
+function $request(method, url, send) {
+  var xhr = new XMLHttpRequest();
+  xhr.open(method, url);
+  return new Promise(function (resolve, reject) {
+    xhr.onload = function () {
+      if (xhr.status < 200 || xhr.status >= 300)
+        reject({request: xhr});
+      else
+        resolve(xhr);
+    };
+    xhr.onerror = function () {
+      reject({request: xhr});
+    };
+    xhr.send(send);
+  });
+}
+
+function $get(url) {
+  return $request('GET', url);
+}
+
+function $post(url, send) {
+  $request('POST', url, send);
+}
+
+function $put(url, send) {
+  $request('PUT', url, send);
+}
+
+function $delete(url) {
+  $request('DELETE', url);
+}
+
+function $head(url) {
+  $request('HEAD', url);
+}
+
+function $connect(url) {
+  $request('CONNECT', url);
+}
+
+function $trace(url) {
+  $request('TRACE', url);
+}
