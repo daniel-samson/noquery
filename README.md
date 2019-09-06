@@ -1,5 +1,5 @@
 # no query
-An extremely lightweight javascript library with some readable syntatic sugar to replace libraries like jquery.
+An extremely lightweight javascript library.
 
 ## Example
 ```javascript
