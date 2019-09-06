@@ -14,6 +14,10 @@ function $all(selector, parentNode) {
 }
 
 function $show(selector, parentNode) {
+  if (typeof selector === "object" && selector.classList.contains('hidden')) {
+    return selector.classList.remove('hidden');
+  }
+
   $all(selector, parentNode).forEach(function (element) {
     if (element.classList.contains('hidden')) {
       element.classList.remove('hidden');
@@ -22,6 +26,10 @@ function $show(selector, parentNode) {
 }
 
 function $hide(selector, parentNode) {
+  if (typeof selector === "object" && !selector.classList.contains('hidden')) {
+    return selector.classList.add('hidden');
+  }
+  
   $all(selector, parentNode).forEach(function (element) {
     if (!element.classList.contains('hidden')) {
       element.classList.add('hidden');
@@ -30,6 +38,15 @@ function $hide(selector, parentNode) {
 }
 
 function $toggleClassName(selector, classNameNeedle, classNameReplacement) {
+  if (typeof selector === "object" && selector.classList.contains(classNameNeedle)) {
+    if (selector.classList.contains(classNameNeedle)) {
+      selector.classList.remove(classNameNeedle);
+    } else {
+      selector.classList.add((classNameReplacement) ? classNameReplacement : classNameNeedle);
+    }
+    return;
+  }
+  
   $all(selector).forEach(function (element) {
     if (element.classList.contains(classNameNeedle)) {
       element.classList.remove(classNameNeedle);
@@ -45,12 +62,18 @@ function $stop(event) {
 }
 
 function $listen(selector, event, listener) {
+  if (typeof selector === "object")
+    return selector.addEventListener(event, listener);
+  
   return $all(selector).forEach(function (element) {
     element.addEventListener(event, listener);
   });
 }
 
 function $ignore(selector, event, listener, useCapture) {
+  if (typeof selector === "object")
+    return selector.removeEventListener(event, listener, useCapture);
+
   return $all(selector).forEach(function (element) {
     element.removeEventListener(event, listener, useCapture);
   });
