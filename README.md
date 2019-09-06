@@ -3,23 +3,23 @@ An extremely lightweight javascript library with some readable syntatic sugar to
 
 ## Example
 ```javascript
-$ready(function () {
-  $listen('.product-menu-action', 'click', function (clickEvent) {
-    $stop(clickEvent);
-    $toggleClassName('.product-menu', 'hidden');
-  });
+$ready(() => {
+  $listen('.product-menu-action', 'click', (clickEvent) => {
+    $stop(clickEvent)
+    $toggleClassName('.product-menu', 'hidden')
+  })
   
-  $listen('.product-keywords', 'keyup', function (keypressEvent) {
-    $stop(keypressEvent);
+  $listen('.product-keywords', 'keyup', (keypressEvent) => {
+    $stop(keypressEvent)
     if (keypressEvent.code === 'Escape')
-      return $hide('.product-search-menu');
+      return $hide('.product-search-menu')
     else if (keypressEvent.code === 'Enter')
-      return $hide('.product-menu');
+      return $hide('.product-menu')
 
     if ($1('.product-keywords').value.length > 0)
       $show('.product-search-menu');
     else
-      $hide('.product-search-menu');
-  });
+      $hide('.product-search-menu')
+  })
 }
 ```
