@@ -82,25 +82,25 @@ function $get(url) {
 }
 
 function $post(url, send) {
-  $request('POST', url, send);
+  return $request('POST', url, send);
 }
 
 function $put(url, send) {
-  $request('PUT', url, send);
+  return $request('PUT', url, send);
 }
 
 function $delete(url) {
-  $request('DELETE', url);
+  return $request('DELETE', url);
 }
 
 function $head(url) {
-  $request('HEAD', url);
+  return $request('HEAD', url);
 }
 
 function $connect(url) {
-  $request('CONNECT', url);
+  return $request('CONNECT', url);
 }
 
 function $trace(url) {
-  $request('TRACE', url);
+  return $request('TRACE', url);
 }
