@@ -4,22 +4,22 @@ An extremely lightweight javascript library with some readable syntatic sugar to
 ## Example
 ```javascript
 $ready(function () {
-  $listen('.productMenuAction', 'click', function (clickEvent) {
+  $listen('.product-menu-action', 'click', function (clickEvent) {
     $stop(clickEvent);
-    $toggleClassName('.productMenu', 'hidden');
+    $toggleClassName('.product-menu', 'hidden');
   });
   
-  $listen('.productKeywords', 'keyup', function (keypressEvent) {
+  $listen('.product-keywords', 'keyup', function (keypressEvent) {
     $stop(keypressEvent);
     if (keypressEvent.code === 'Escape')
-      return $hide('.productSearchMenu');
+      return $hide('.product-search-menu');
     else if (keypressEvent.code === 'Enter')
-      return $hide('.productMenu');
+      return $hide('.product-menu');
 
-    if ($1('.productKeywords').value.length > 0)
-      $show('.productSearchMenu');
+    if ($1('.product-keywords').value.length > 0)
+      $show('.product-search-menu');
     else
-      $hide('.productSearchMenu');
+      $hide('.product-search-menu');
   });
 }
 ```
