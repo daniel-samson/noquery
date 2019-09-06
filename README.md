@@ -1,5 +1,5 @@
 # no query
-An extremely lightweight javascript library.
+An extremely lightweight javascript library. Please see [wiki](https://github.com/daniel-samson/noquery/wiki) for more detail.
 
 ## Example
 ```javascript
