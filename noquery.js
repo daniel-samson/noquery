@@ -127,3 +127,44 @@ function $connect(url) {
 function $trace(url) {
   return $request('TRACE', url);
 }
+
+/**
+ * var titleView = $view `<h1>${'title'}</h1>`;
+ * titleView({title: "hello"});
+ */
+function $view(strings, ...keys) {
+  return (function(...values) {
+    var dict = values[values.length - 1] || {};
+    var result = [strings[0]];
+    keys.forEach(function(key, i) {
+      var value = Number.isInteger(key) ? values[key] : dict[key];
+      result.push(value, strings[i + 1]);
+    }); 
+    return result.join('');
+  });
+}
+
+/**
+ * Bind model to view and update view when model changes
+ * var titleMV = $modelView({title: "reactive components"}, $view `<h1>${'title'}</h1>`);
+ * titleMV.title = "new title";
+ */
+function $modelView(model, view)
+{
+  var modelView = {};
+  
+  modelView.model = new Proxy(model, {
+    set: function(object, property, value) {
+      object[property] = value;
+      modelView.update();
+    }
+  });
+
+  modelView.view = view;
+  
+  modelView.update = function() {
+    return view(model);
+  }
+  
+  return modelView;
+}
