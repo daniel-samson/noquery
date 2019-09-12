@@ -13,8 +13,6 @@ function $view(strings) {
   ) {
     keys[_key - 1] = arguments[_key];
   }
-
-  // TODO: try to remove the ... operator - help remove issues older browsers
   return function() {
     for (
       var _len2 = arguments.length, values = new Array(_len2), _key2 = 0;
