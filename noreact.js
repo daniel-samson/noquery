@@ -34,22 +34,23 @@ function $view(strings) {
   };
 }
 
-
-
-/** use a string instead of a template literal to convert into the paramaters needed for $view **/
-function $templateLiteral(string) {
-  var regex = /\${'[\w\d]+'}/g;
-  var template = string.split(regex);
-  var literals = [];
+/**
+ * Lets you use a string instead of a template literal
+ * var titleView = $viewStringLiteral(`<h1>${'title'}</h1>`);
+ * titleView({title: "hello"});
+ **/
+function $viewStringLiteral(string) {
+  var regex = /\${['"][\w\d]+['"]}/g;
+  var templateSplit = string.split(regex);
+  var args = [templateSplit];
   var matches = string.matchAll(regex);
   for (var arr of matches) {
     var z = string.substring(arr.index + 3, (arr.index + arr[0].length) - 2);
-    literals.push(z);
+    args.push(z);
   }
   
-  return [template, literals];
+  return $view.apply(null, args);
 }
-
 /**
  * Bind model to view and update target when model changes
  * var titleMV = $modelView($1('.title'), {title: "reactive components"}, $view `<h1>${'title'}</h1>`);
