@@ -34,7 +34,7 @@ function $templateLiteral(strings) {
 
 /**
  * Lets you use a string instead of a template literal
- * var titleView = $stringLiteral(`<h1>${'title'}</h1>`);
+ * var titleView = $stringLiteral("<h1>${'title'}</h1>");
  * titleView({title: "hello"});
  **/
 function $stringLiteral(string) {
@@ -49,6 +49,7 @@ function $stringLiteral(string) {
   
   return $view.apply(null, args);
 }
+
 /**
  * Bind model to view and update target when model changes
  * var titleMV = $modelView($1('.title'), {title: "reactive components"}, $templateLiteral `<h1>${'title'}</h1>`);
