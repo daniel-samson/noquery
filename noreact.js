@@ -1,9 +1,10 @@
 
 /**
- * var titleView = $templateLiteral `<h1>${'title'}</h1>`;
- * titleView({title: "hello"});
+ * creates a view a template literal
+ * var titleView = $viewTemplateLiteral `<h1>${'title'}</h1>`;
+ * var result = titleView({title: "hello"});
  */
-function $templateLiteral(strings) {
+function $viewTemplateLiteral(strings) {
   for (
     var _len = arguments.length,
       keys = new Array(_len > 1 ? _len - 1 : 0),
@@ -33,11 +34,11 @@ function $templateLiteral(strings) {
 }
 
 /**
- * Lets you use a string instead of a template literal
+ * creates a view a string literal
  * var titleView = $stringLiteral("<h1>${'title'}</h1>");
- * titleView({title: "hello"});
+ * var result = titleView({title: "hello"});
  **/
-function $stringLiteral(string) {
+function $viewStringLiteral(string) {
   var regex = /\${['"][\w\d]+['"]}/g;
   var templateSplit = string.split(regex);
   var args = [templateSplit];
