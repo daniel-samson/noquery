@@ -3,17 +3,51 @@
  * var titleView = $view `<h1>${'title'}</h1>`;
  * titleView({title: "hello"});
  */
-function $view(strings, ...keys) {
+function $view(strings) {
+  for (
+    var _len = arguments.length,
+      keys = new Array(_len > 1 ? _len - 1 : 0),
+      _key = 1;
+    _key < _len;
+    _key++
+  ) {
+    keys[_key - 1] = arguments[_key];
+  }
+
   // TODO: try to remove the ... operator - help remove issues older browsers
-  return (function(...values) {
+  return function() {
+    for (
+      var _len2 = arguments.length, values = new Array(_len2), _key2 = 0;
+      _key2 < _len2;
+      _key2++
+    ) {
+      values[_key2] = arguments[_key2];
+    }
+
     var dict = values[values.length - 1] || {};
     var result = [strings[0]];
     keys.forEach(function(key, i) {
       var value = Number.isInteger(key) ? values[key] : dict[key];
       result.push(value, strings[i + 1]);
-    }); 
-    return result.join('');
-  });
+    });
+    return result.join("");
+  };
+}
+
+
+
+/** use a string instead of a template literal to convert into the paramaters needed for $view **/
+function $templateLiteral(string) {
+  var regex = /\${'[\w\d]+'}/g;
+  var template = string.split(regex);
+  var literals = [];
+  var matches = string.matchAll(regex);
+  for (var arr of matches) {
+    var z = string.substring(arr.index + 3, (arr.index + arr[0].length) - 2);
+    literals.push(z);
+  }
+  
+  return [template, literals];
 }
 
 /**
