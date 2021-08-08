@@ -1,5 +1,5 @@
 # no query
-An extremely lightweight javascript library. Please see [wiki](https://github.com/daniel-samson/noquery/wiki) for more detail.
+An extremely lightweight javascript library to replace jQuery. No query is 2KB in size, which is significanty less than jQuery (30KB). Please see [wiki](https://github.com/daniel-samson/noquery/wiki) for more detail.
 
 ## Example
 ```javascript
